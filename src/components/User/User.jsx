@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react'
 import {CallContext} from "../../Contexts/CallContext"
-import { useHistory } from 'react-router-dom';
 
 export default function User({user, calling, setCalling}) {
     const [username, setUsername] = useState(user.username);
@@ -10,8 +9,6 @@ export default function User({user, calling, setCalling}) {
     const {callAccepted, callUser, leaveCall} = useContext(CallContext);
 
     console.log(user);
-
-    const history = useHistory();
 
     const updateUser = async (id) => {
         try {
@@ -27,19 +24,19 @@ export default function User({user, calling, setCalling}) {
         }
     }
 
-    const deleteUser = async (id) => {
-        try {
-            const url = `http://localhost:4000/api/v1/deleteAccount/${id}`;
-            const config = {method: "DELETE"};
-            const resp = await fetch(url, config);
-            const message = await resp.json();
-            if(message){
-                window.location.replace("/users");
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    // const deleteUser = async (id) => {
+    //     try {
+    //         const url = `http://localhost:4000/api/v1/deleteAccount/${id}`;
+    //         const config = {method: "DELETE"};
+    //         const resp = await fetch(url, config);
+    //         const message = await resp.json();
+    //         if(message){
+    //             window.location.replace("/users");
+    //         }
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
     return (
         <div className="col s12 m6 l6">

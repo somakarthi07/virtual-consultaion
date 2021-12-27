@@ -18,7 +18,7 @@ const UserContextProvider = ({children}) => {
             setFetchUser(!fetchuser);
         }
         getCurrentUser();
-    }, []);
+    });
     
     return (
         <UserContext.Provider value={{user}}>
