@@ -12,7 +12,8 @@ export default function User({user, calling, setCalling}) {
 
     const updateUser = async (id) => {
         try {
-            const url = `http://localhost:4000/api/v1/update/${id}`;
+            // const url = `http://localhost:4000/api/v1/update/${id}`;
+            const url = `https://rocky-escarpment-94268.herokuapp.com/api/v1/update/${id}`;
             const config = {method: "PUT", headers: {"Content-Type":"application/json"}, body: JSON.stringify({username, userprofile})};
             const resp = await fetch(url, config);
             const message = await resp.json();

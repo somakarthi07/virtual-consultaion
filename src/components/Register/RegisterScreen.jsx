@@ -15,7 +15,8 @@ export default function RegisterScreen() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = "http://localhost:4000/api/v1/register";
+        // const url = "http://localhost:4000/api/v1/register";
+        const url = "https://rocky-escarpment-94268.herokuapp.com/api/v1/register";
         if(password !== rePassword){
             setError("Passwords does not match.");
             setTimeout(() => {

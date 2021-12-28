@@ -4,7 +4,8 @@ import useFetch from "../../hooks/useFetch"
 import VideoCall from "../../pages/VideoCall/VideoCall";
 
 export default function Users() {
-    const url = "http://localhost:4000/api/v1/users";
+    // const url = "http://localhost:4000/api/v1/users";
+    const url = "https://rocky-escarpment-94268.herokuapp.com/api/v1/users";
     const {data, error, loading} = useFetch(url);
     const [calling, setCalling] = useState(false);
     return (

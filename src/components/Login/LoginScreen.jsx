@@ -37,7 +37,8 @@ export default function LoginScreen() {
                 setError(null);
             }, 3000);
         }else{
-            const url = "http://localhost:4000/api/v1/login";
+            // const url = "http://localhost:4000/api/v1/login";
+            const url = "https://rocky-escarpment-94268.herokuapp.com/api/v1/login";
             try {
                 const user = await fetch(url, {
                     method: "POST",

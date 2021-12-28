@@ -5,7 +5,7 @@ import {UserContext} from "./User";
 
 const CallContext = createContext();
 
-const socket = io('http://localhost:4000');
+const socket = io('https://rocky-escarpment-94268.herokuapp.com/');
 
 const CallContextProvider = ({ children }) => {
 
