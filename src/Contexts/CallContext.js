@@ -25,12 +25,14 @@ const CallContextProvider = ({ children }) => {
   useEffect(() => {
     socket.on('me', (id) => setMe(id));
     console.log(me);
+  }, [me]);
 
+  useEffect(() => {
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       console.log({ from, name: callerName, signal });
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  }, []);
+  }, [])
 
   useEffect(() => {
 
