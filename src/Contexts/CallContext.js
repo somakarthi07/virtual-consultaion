@@ -23,6 +23,16 @@ const CallContextProvider = ({ children }) => {
   const connectionRef = useRef({});
 
   useEffect(() => {
+    socket.on('me', (id) => setMe(id));
+    console.log(me);
+
+    socket.on('callUser', ({ from, name: callerName, signal }) => {
+      console.log({ from, name: callerName, signal });
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+    });
+  }, []);
+
+  useEffect(() => {
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
@@ -30,13 +40,6 @@ const CallContextProvider = ({ children }) => {
 
         myVideo.current.srcObject = currentStream;
       });
-
-    socket.on('me', (id) => setMe(id));
-
-    socket.on('callUser', ({ from, name: callerName, signal }) => {
-      console.log({ from, name: callerName, signal });
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-    });
   }, []);
 
   const answerCall = () => {
@@ -57,10 +60,14 @@ const CallContextProvider = ({ children }) => {
     connectionRef.current = peer;
   };
 
-  const callUser = (id) => {
+  const callUser = (id, doctor) => {
 
     setName(user.username);
-    console.log("userrrr", user)
+
+    console.log({ username: user.username, room: id }, { username: doctor, room: id });
+
+    socket.emit('joinRoom', { username: name, room: id });
+    socket.emit('joinRoom', { username: doctor, room: id });
 
     const peer = new Peer({ initiator: true, trickle: false, stream });
 
