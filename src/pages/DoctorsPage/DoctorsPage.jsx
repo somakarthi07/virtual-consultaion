@@ -1,14 +1,13 @@
 import React from 'react'
-import Products from "../../components/Products/Products"
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from "../../components/Footer/Footer"
-import Orders from '../../components/Orders/Orders'
+import Doctors from "../../components/Doctors/Doctors";
 
-export default function OrdersPage() {
+export default function DoctorsPage() {
     return (
         <div>
             <Navbar />
-                <Orders />
+            <Doctors />
             <Footer />
         </div>
     )

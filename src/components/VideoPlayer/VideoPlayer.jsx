@@ -1,11 +1,13 @@
 import React, {useContext} from 'react';
+// import ReactVideoPlayer from "react-video-js-player"
 import {CallContext} from "../../Contexts/CallContext";
 
  const VideoPlayer = () => {
 
-    const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(CallContext);
+    const { name, callAccepted, myVideo, userVideo, callEnded, stream, call} = useContext(CallContext);
 
-    console.log(name, call, userVideo, myVideo)
+    // const [videoControl, setVideoControl] = useState(true); 
+    // const [audioControl, setAudioControl] = useState(true); 
 
     return (
         <div>
@@ -13,8 +15,9 @@ import {CallContext} from "../../Contexts/CallContext";
                 <div className="container">
                     <p className='center'>{name || "Me"}</p>
                     <div className="video-container">
-                        <video ref={myVideo} autoPlay playsInline muted></video>
-                        {/* <iframe width="853" height="480" ref={myVideo} frameBorder="0" allowFullScreen></iframe> */}
+                        <video ref={myVideo} autoPlay playsInline muted controls></video>
+                        {/* <button className={`btn ${videoControl ? 'green': 'red darken-1'}`} onClick={() => setVideoControl(!videoControl)} ><i className="material-icons">video</i></button>
+                        <button className={`btn ${audioControl ? 'green': 'red darken-1'}`} onClick={() => setAudioControl(!audioControl)}><i className="material-icons">audio</i></button> */}
                     </div>
                 </div>
             )}
@@ -23,7 +26,6 @@ import {CallContext} from "../../Contexts/CallContext";
                     <p className="center">{call.name}</p>
                     <div className="video-container">
                         <video ref={userVideo} autoPlay playsInline muted></video>
-                        {/* <iframe width="853" height="480" ref={myVideo} frameBorder="0" allowFullScreen></iframe> */}
                     </div>
                 </div>
             )}

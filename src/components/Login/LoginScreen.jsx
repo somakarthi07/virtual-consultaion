@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
-import { Link, useHistory} from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import login from "../../assets/login.jpg"
 
 export default function LoginScreen() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-
-    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,8 +36,8 @@ export default function LoginScreen() {
                 setError(null);
             }, 3000);
         }else{
-            // const url = "http://localhost:4000/api/v1/login";
-            const url = "https://rocky-escarpment-94268.herokuapp.com/api/v1/login";
+            const url = `http://localhost:4000/api/v1/login`;
+            console.log(url);
             try {
                 const user = await fetch(url, {
                     method: "POST",
@@ -55,7 +54,7 @@ export default function LoginScreen() {
                 }else{
                     setLoading(false);
                     localStorage.setItem("jwt", resp);
-                    history.push("/users");
+                    window.location.replace("/posts");
                 }      
             } catch (err) {
                 console.log(err);
@@ -72,8 +71,10 @@ export default function LoginScreen() {
     }
 
     return (
-        <div className="container">
-            <div className="card" style={{marginTop: "10rem", marginLeft: "8rem", marginRight: "8rem"}}>
+        <div style={{height: "85vh", width: "100vw"}}>
+             <div class="parallax-container" style={{height: "85vh", width: "100vw"}}>
+                <div class="parallax"><img src={login} alt='' /></div>
+                <div className="card" style={{marginTop: "5rem", marginLeft: "25rem", marginRight: "25rem"}}>
                 <div className="card-content">
                     <span className="card-title" style={{textAlign: "center"}}>Login</span>
                 <div className="input-field">
@@ -88,13 +89,14 @@ export default function LoginScreen() {
                         new to this site? <Link to="/register">register here</Link>
                     </p>
                     <div style={{textAlign: "center"}}>
-                        <button className="btn" type="submit" onClick={handleSubmit}>Login</button>
+                        <button className="btn waves-effect waves-light pink lighten-2" type="submit" onClick={handleSubmit}>Login</button>
                     </div>
                     <div style={{textAlign: "center", marginTop: "1rem"}}>
-                        {error && <div>{error}</div>}
+                        {error && <div style={{ padding: "2rem"}}>{error}</div>}
                         {loading && <div>logging in ...</div>}
                     </div>
               </div>
+            </div>
             </div>
         </div>
     )

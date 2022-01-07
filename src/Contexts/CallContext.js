@@ -1,15 +1,12 @@
-import React, { createContext, useState, useRef, useEffect, useContext } from 'react';
+import React, { createContext, useState, useRef, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
-import {UserContext} from "./User";
 
 const CallContext = createContext();
 
-const socket = io('https://rocky-escarpment-94268.herokuapp.com/');
+const socket = io(`http://localhost:4000`);
 
 const CallContextProvider = ({ children }) => {
-
-  const {user} = useContext(UserContext);
 
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
@@ -17,14 +14,18 @@ const CallContextProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [call, setCall] = useState({});
   const [me, setMe] = useState('');
+  // const [stopVideoStream, setStopVideoStream] = useState(true);
+  // const [stopAudioStream, setStopAudioStream] = useState(true);
 
   const myVideo = useRef({});
   const userVideo = useRef({});
   const connectionRef = useRef({});
 
   useEffect(() => {
-    socket.on('me', (id) => setMe(id));
-    console.log(me);
+    socket.on('me', (id) => {
+      setMe(id);
+    });
+
   }, [me]);
 
   useEffect(() => {
@@ -62,19 +63,13 @@ const CallContextProvider = ({ children }) => {
     connectionRef.current = peer;
   };
 
-  const callUser = (id, doctor) => {
-
-    setName(user.username);
-
-    console.log({ username: user.username, room: id }, { username: doctor, room: id });
-
-    socket.emit('joinRoom', { username: name, room: id });
-    socket.emit('joinRoom', { username: doctor, room: id });
+  const callUser = (id, myName) => {
+    setName(myName);
 
     const peer = new Peer({ initiator: true, trickle: false, stream });
 
     peer.on('signal', (data) => {
-      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
+      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name: myName });
     });
 
     peer.on('stream', (currentStream) => {
@@ -112,7 +107,7 @@ const CallContextProvider = ({ children }) => {
       me,
       callUser,
       leaveCall,
-      answerCall,
+      answerCall
     }}
     >
       {children}
@@ -120,4 +115,4 @@ const CallContextProvider = ({ children }) => {
   );
 };
 
-export { CallContextProvider, CallContext };
+export { CallContextProvider, CallContext, socket };

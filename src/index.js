@@ -6,7 +6,6 @@ import {UserContextProvider} from "./Contexts/User"
 import {CallContextProvider} from "./Contexts/CallContext"
 
 ReactDOM.render(
-
     <UserContextProvider>
       <CallContextProvider>
         <App />

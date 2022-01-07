@@ -7,19 +7,16 @@ import {CallContext} from "../../Contexts/CallContext";
 
     console.log(callAccepted, call);
 
-    // useEffect(() => {
-    //     answerCall();
-    // }, [])
-
     return (
         <div>
             {call.isReceivingCall && !callAccepted && (
-                <div className="card">
-                    <div className="card-header">
-                        {call.name} is calling ....
+                <div class="card">
+                    <div class="card-content">
+                        <h4>{call.name} is calling ....</h4>
+                        <p>click on answer to talk to {call.name}.</p>
                     </div>
-                    <div className="card-action">
-                        <button className="btn" onClick={answerCall}>Answer</button> 
+                    <div class="card-action">
+                        <button class="waves-effect btn green darken-2" onClick={answerCall} >Answer</button>
                     </div>
                 </div>
             )}

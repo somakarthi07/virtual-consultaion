@@ -1,23 +1,24 @@
-import React, {useState} from 'react'
-import User from "../User/User"
-import useFetch from "../../hooks/useFetch"
-import VideoCall from "../../pages/VideoCall/VideoCall";
+import React from 'react';
+import User from "../User/User";
+import useFetch from "../../hooks/useFetch";
+import paint from "../../assets/giphy.webp"
 
 export default function Users() {
-    // const url = "http://localhost:4000/api/v1/users";
-    const url = "https://rocky-escarpment-94268.herokuapp.com/api/v1/users";
+    const url = `http://localhost:4000/api/v1/doctors`;
     const {data, error, loading} = useFetch(url);
-    const [calling, setCalling] = useState(false);
+
     return (
         <div className="container">
-            {!calling && <div className="row">
+            {<div className="row">
                     {data && data.users.map(user => (
-                        <User key={user._id} user={user} setCalling={setCalling} calling={calling} />
+                        <User key={user._id} user={user} />
                     ))}
             </div>}
-            {loading && <h2>Loading ....</h2>}
+            {loading && <div style={{height: "80vh", width: "100vw", marginTop: "20vh", marginLeft: "15vw"}}>
+                            <img src={paint} alt="" />
+                            <h1 style={{marginLeft: "6vw"}}>Please wait ...</h1>
+                        </div>}
             {error && <h3 style={{color: "red"}}>{error}</h3>}
-            {calling && <VideoCall />}
         </div>
     )
 }

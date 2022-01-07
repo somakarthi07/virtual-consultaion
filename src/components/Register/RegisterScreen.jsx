@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {Link, useHistory} from "react-router-dom"
+import {Link} from "react-router-dom"
+import register from "../../assets/register.png"
 
 export default function RegisterScreen() {
     const [username, setUsername] = useState("");
@@ -11,12 +12,9 @@ export default function RegisterScreen() {
     const [error, setError] = useState();
     const [objError, setObjError] = useState({errors: {}});
 
-    const history = useHistory();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const url = "http://localhost:4000/api/v1/register";
-        const url = "https://rocky-escarpment-94268.herokuapp.com/api/v1/register";
+        const url = `http://localhost:4000/api/v1/register`;
         if(password !== rePassword){
             setError("Passwords does not match.");
             setTimeout(() => {
@@ -37,7 +35,7 @@ export default function RegisterScreen() {
                     }, 3000);
                 }else{
                     localStorage.setItem("jwt", resp);
-                    history.push("/users");
+                    window.location.replace("/posts");
                 }
                 
             } catch (err) {
@@ -54,48 +52,51 @@ export default function RegisterScreen() {
     }
 
     return (
-        <div className="container">
-            <div className="card" style={{marginTop: "2rem", marginLeft: "8rem", marginRight: "8rem"}}>
-                <div className="card-content">
-                    <span className="card-title" style={{textAlign: "center"}}>Sign Up</span>
-                    <div className="input-field">
-                        {objError.errors.username && <div style={{color: "red", paddingBottom: "2rem"}}>{objError.errors.username}</div>}
-                        <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} />
-                        <label htmlFor="username">username</label>
-                    </div>
-                    <div className="input-field">
-                        {objError.errors.email && <div style={{color: "red"}}>{objError.errors.email}</div>}
-                        <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-                        <label htmlFor="email">email</label>
-                    </div>
-                    <div className="input-field">
-                        {objError.errors.userprofile && <div style={{color: "red"}}>{objError.errors.userprofile}</div>}
-                        <input type="text" name="user-profile" onChange={(e) => setUserprofile(e.target.value)} />
-                        <label htmlFor="user-profile">profile URL</label>
-                    </div>
-                    <div className="input-field">
-                        {objError.errors.password && <div style={{color: "red"}}>{objError.errors.password}</div>}
-                        <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-                        <label htmlFor="password">password</label>
-                    </div>
-                    <div className="input-field">
-                        <input type="password" name="re-password" onChange={(e) => setRePassword(e.target.value)} />
-                        <label htmlFor="re-password">re-type password</label>
-                    </div>
-                    <p>
-                        <label>
-                            <input type="checkbox" value={isDoctor} onClick={(e) => setIsDoctor(!isDoctor)} />
-                            <span>I am a Doctor</span>
-                        </label>
-                    </p>
-                    <p style={{textAlign: "center", marginBottom: "2rem"}}>
-                        already have an account? <Link to="/login">login here</Link>
-                    </p>
-                    <div  style={{textAlign: "center"}}>
-                        <button className="btn" type="submit" onClick={handleSubmit}>Sign up</button>
-                    </div>
-                    <div style={{textAlign: "center", marginTop: "1rem"}}>
-                        {error && <div>{error}</div>}
+        <div style={{height: "85vh", width: "100vw"}}>
+            <div className='parallax-container' style={{height: "85vh", width: "100vw"}}>
+                <div className="parallax"><img src={register} style={{marginBottom: "4rem"}} alt="" /></div>
+                <div className="card opaque" style={{marginTop: "2rem", marginLeft: "25rem", marginRight: "25rem", marginBottom: "2rem"}}>
+                    <div className="card-content">
+                        <span className="card-title" style={{textAlign: "center"}}>Sign Up</span>
+                        <div className="input-field">
+                            {objError.errors.username && <div style={{color: "red", paddingBottom: "2rem"}}>{objError.errors.username}</div>}
+                            <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} />
+                            <label htmlFor="username">username</label>
+                        </div>
+                        <div className="input-field">
+                            {objError.errors.email && <div style={{color: "red"}}>{objError.errors.email}</div>}
+                            <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                            <label htmlFor="email">email</label>
+                        </div>
+                        <div className="input-field">
+                            {objError.errors.userprofile && <div style={{color: "red"}}>{objError.errors.userprofile}</div>}
+                            <input type="text" name="user-profile" onChange={(e) => setUserprofile(e.target.value)} />
+                            <label htmlFor="user-profile">profile URL</label>
+                        </div>
+                        <div className="input-field">
+                            {objError.errors.password && <div style={{color: "red"}}>{objError.errors.password}</div>}
+                            <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
+                            <label htmlFor="password">password</label>
+                        </div>
+                        <div className="input-field">
+                            <input type="password" name="re-password" onChange={(e) => setRePassword(e.target.value)} />
+                            <label htmlFor="re-password">re-type password</label>
+                        </div>
+                        <p>
+                            <label>
+                                <input type="checkbox" value={isDoctor} onClick={(e) => setIsDoctor(!isDoctor)} />
+                                <span>I am a Doctor</span>
+                            </label>
+                        </p>
+                        <p style={{textAlign: "center", marginBottom: "2rem"}}>
+                            already have an account? <Link to="/login">login here</Link>
+                        </p>
+                        <div  style={{textAlign: "center"}}>
+                            <button className="btn waves-effect waves-light pink lighten-2" type="submit" onClick={handleSubmit}>Sign up</button>
+                        </div>
+                        <div style={{textAlign: "center", marginTop: "1rem"}}>
+                            {error && <div>{error}</div>}
+                        </div>
                     </div>
                 </div>
             </div>
