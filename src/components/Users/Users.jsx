@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import paint from "../../assets/giphy.webp"
 
 export default function Users() {
-    const url = `http://localhost:4000/api/v1/doctors`;
+    const url = `/api/v1/doctors`;
     const {data, error, loading} = useFetch(url);
 
     return (

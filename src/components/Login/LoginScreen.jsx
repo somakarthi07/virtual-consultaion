@@ -36,7 +36,7 @@ export default function LoginScreen() {
                 setError(null);
             }, 3000);
         }else{
-            const url = `http://localhost:4000/api/v1/login`;
+            const url = `/api/v1/login`;
             console.log(url);
             try {
                 const user = await fetch(url, {

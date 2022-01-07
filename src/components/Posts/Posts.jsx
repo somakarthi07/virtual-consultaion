@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import paint from "../../assets/giphy.webp"
 
 export default function Posts() {
-    const url = `http://localhost:4000/api/v1/posts`;
+    const url = `/api/v1/posts`;
     const {data, error, loading} = useFetch(url);
 
     // const grez = ["#787878", "#7b7b7b", "#7d7d7d", "#808080", "#838383", "#858585", "#888888"]

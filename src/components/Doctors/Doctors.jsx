@@ -5,7 +5,7 @@ import paint from "../../assets/giphy.webp"
 
 
 export default function Doctors() {
-    const url = `http://localhost:4000/api/v1/users`;
+    const url = `/api/v1/users`;
     const {data, error, loading} = useFetch(url);
     return (
         <div className="container">
