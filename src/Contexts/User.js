@@ -1,4 +1,5 @@
 import React, {useEffect, createContext, useState} from 'react'
+import SERVER_URL from "../ServerURL";
 
 const UserContext = createContext();
 
@@ -7,7 +8,7 @@ const UserContextProvider = ({children}) => {
 
     useEffect(() => {
         const getCurrentUser = async () => {
-            const url = `http://localhost:4000/api/v1/currentuser`;
+            const url = `${SERVER_URL}/api/v1/currentuser`;
             const config = {method: "GET", headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`}}
             const resp = await fetch(url, config);
             const data = await resp.json();

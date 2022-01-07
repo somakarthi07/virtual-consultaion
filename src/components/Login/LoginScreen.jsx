@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Link} from 'react-router-dom';
-import login from "../../assets/login.jpg"
+import login from "../../assets/login.jpg";
+import SERVER_URL from "../../ServerURL";
 
 export default function LoginScreen() {
     const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ export default function LoginScreen() {
                 setError(null);
             }, 3000);
         }else{
-            const url = `/api/v1/login`;
+            const url = `${SERVER_URL}/api/v1/login`;
             console.log(url);
             try {
                 const user = await fetch(url, {

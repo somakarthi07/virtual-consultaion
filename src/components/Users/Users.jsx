@@ -1,10 +1,11 @@
 import React from 'react';
 import User from "../User/User";
 import useFetch from "../../hooks/useFetch";
-import paint from "../../assets/giphy.webp"
+import paint from "../../assets/giphy.webp";
+import SERVER_URL from "../../ServerURL";
 
 export default function Users() {
-    const url = `/api/v1/doctors`;
+    const url = `${SERVER_URL}/api/v1/doctors`;
     const {data, error, loading} = useFetch(url);
 
     return (

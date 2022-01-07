@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom"
-import register from "../../assets/register.png"
+import register from "../../assets/register.png";
+import SERVER_URL from "../../ServerURL";
 
 export default function RegisterScreen() {
     const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ export default function RegisterScreen() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = `/api/v1/register`;
+        const url = `${SERVER_URL}/api/v1/register`;
         if(password !== rePassword){
             setError("Passwords does not match.");
             setTimeout(() => {

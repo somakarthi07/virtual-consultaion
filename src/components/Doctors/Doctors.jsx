@@ -2,10 +2,10 @@ import React from 'react';
 import Doctor from "../Doctor/Doctor";
 import useFetch from "../../hooks/useFetch";
 import paint from "../../assets/giphy.webp"
-
+import SERVER_URL from "../../ServerURL";
 
 export default function Doctors() {
-    const url = `/api/v1/users`;
+    const url = `${SERVER_URL}/api/v1/users`;
     const {data, error, loading} = useFetch(url);
     return (
         <div className="container">

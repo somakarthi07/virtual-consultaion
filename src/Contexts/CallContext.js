@@ -1,10 +1,11 @@
 import React, { createContext, useState, useRef, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
+import SERVER_URL from "../ServerURL";
 
 const CallContext = createContext();
 
-const socket = io(`http://localhost:4000`);
+const socket = io(SERVER_URL);
 
 const CallContextProvider = ({ children }) => {
 

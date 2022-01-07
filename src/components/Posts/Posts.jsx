@@ -1,10 +1,11 @@
 import React from 'react';
 import Post from "../Post/Post";
 import useFetch from "../../hooks/useFetch";
-import paint from "../../assets/giphy.webp"
+import paint from "../../assets/giphy.webp";
+import SERVER_URL from "../../ServerURL";
 
 export default function Posts() {
-    const url = `/api/v1/posts`;
+    const url = `${SERVER_URL}/api/v1/posts`;
     const {data, error, loading} = useFetch(url);
 
     // const grez = ["#787878", "#7b7b7b", "#7d7d7d", "#808080", "#838383", "#858585", "#888888"]
