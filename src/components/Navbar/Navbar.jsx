@@ -23,8 +23,8 @@ const Navbar = () => {
 
     return (
         <nav className="nav-wrapper transparent">
-            <Link className="brand-logo black-text" to="/" ><img src={heal} className='responsive-img circle' style={{height: 28, marginLeft: 10, marginRight: 10}} alt="" />Heal Virtual</Link>
-            <Link className="sidenav-trigger hide-on-med-and-up" to="/" data-target="mobile-links" ><i className="material-icons">menu</i></Link>
+            <Link className="brand-logo black-text" to="/" ><img src={heal} className='responsive-img circle' style={{height: 28, marginLeft: 10, marginRight: 10}} alt="" />Heal</Link>
+            <Link className="sidenav-trigger hide-on-med-and-up black-text" to="/" data-target="mobile-links" ><i className="material-icons">menu</i></Link>
             <ul className="hide-on-small-only right" style={{marginRight: 10}}>
                 {!authToken && <li><NavLink exact to="/" className="black-text">Home</NavLink></li>}
                 {!authToken && <li><NavLink exact to="/login" className="black-text">Login</NavLink></li>}

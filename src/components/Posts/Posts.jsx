@@ -12,6 +12,7 @@ export default function Posts() {
 
     return (
         <div className="container">
+            {/* <h1 className='center'>Think Positive!</h1> */}
             {<div className="row">
                     {data && data.map(post => (
                         <Post key={post._id} post={post} />

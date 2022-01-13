@@ -29,6 +29,7 @@ export default function PersonalProfilePage() {
                                     <small>Joined on {new Date(user.createdAt).toLocaleString()}</small>
                                 </div>
                             </div>
+                            <a href="https://peaceful-saha-588b95.netlify.app" style={{marginBottom: "5vh", marginLeft: "30vw"}} className='btn waves-effect pink lighten-1'> Take a mental health assessment</a>
                         </div>
                 }
                 {user && user.isDoctor && <div className="container">
