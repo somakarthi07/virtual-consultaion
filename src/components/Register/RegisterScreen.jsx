@@ -53,10 +53,10 @@ export default function RegisterScreen() {
     }
 
     return (
-        <div style={{height: "85vh", width: "100vw"}}>
-            <div className='parallax-container' style={{height: "85vh", width: "100vw"}}>
-                <div className="parallax"><img src={register} style={{marginBottom: "4rem"}} alt="" /></div>
-                <div className="card opaque" style={{marginTop: "2rem", marginLeft: "25rem", marginRight: "25rem", marginBottom: "2rem"}}>
+        <div>
+            <div className='parallax-container' style={{height: "85vh"}}>
+                <div className="parallax"><img src={register} className='responsive-img' alt="" /></div>
+                <div className="card opaque"  style={{marginTop: "5vh", marginBottom:"5vh", marginLeft: "20vw", marginRight: "20vw"}}>
                     <div className="card-content">
                         <span className="card-title" style={{textAlign: "center"}}>Sign Up</span>
                         <div className="input-field">

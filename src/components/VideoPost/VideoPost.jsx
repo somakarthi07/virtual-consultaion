@@ -12,9 +12,12 @@ export default function VideoPost({video}) {
 
     const pinky = ["#ffc0db", "#ffc0d6", "#ffc0d0", "#ffc0cb", "#ffc0c6", "#ffc0c1", "#ffc5c0"]
 
+
     return (
-        <div className="col s12 m12 l12" style={{background: pinky[Math.round(Math.random(0, pinky.length))]}}>
-           {video && <div style={{height: "50vh", width: "80vw", marginTop: "5vh", marginLeft: "12vw", marginBottom: "2vh"}}><ReactPlayer url={video.url} /></div>}
+        <div className="col s12 m12 l12" style={{background: pinky[Math.round(Math.random(0, pinky.length))]}} >
+           {video && <div style={{height: "60vh", marginTop: "5vh", marginBottom: "5vh", width: "70vw", marginLeft: "10vw", marginRight: "10vw"}}>
+                        <ReactPlayer url={video.url} />
+                    </div>}
         </div>
     )
 }

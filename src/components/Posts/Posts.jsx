@@ -8,17 +8,14 @@ export default function Posts() {
     const url = `${SERVER_URL}/api/v1/posts`;
     const {data, error, loading} = useFetch(url);
 
-    // const grez = ["#787878", "#7b7b7b", "#7d7d7d", "#808080", "#838383", "#858585", "#888888"]
-
     return (
         <div className="container">
-            {/* <h1 className='center'>Think Positive!</h1> */}
             {<div className="row">
                     {data && data.map(post => (
                         <Post key={post._id} post={post} />
                     ))}
             </div>}
-            {loading && <div style={{height: "80vh", width: "100vw", marginTop: "20vh", marginLeft: "15vw"}}>
+            {loading && <div style={{height: "80vh", marginTop: "20vh", marginLeft: "15vw"}}>
                             <img src={paint} alt="" />
                             <h1 style={{marginLeft: "6vw"}}>Please wait ...</h1>
                         </div>}

@@ -72,13 +72,13 @@ export default function LoginScreen() {
     }
 
     return (
-        <div style={{height: "85vh", width: "100vw"}}>
-             <div class="parallax-container" style={{height: "85vh", width: "100vw"}}>
-                <div class="parallax"><img src={login} alt='' /></div>
-                <div className="card" style={{marginTop: "5rem", marginLeft: "25rem", marginRight: "25rem"}}>
+           <div>
+            <div class="parallax-container" style={{height: "85vh"}}>
+                <div class="parallax"><img src={login} className='responsive-img' alt='' /></div>
+                <div className="card" style={{marginTop: "10vh", marginBottom:"10vh", marginLeft: "20vw", marginRight: "20vw"}}>
                 <div className="card-content">
                     <span className="card-title" style={{textAlign: "center"}}>Login</span>
-                <div className="input-field">
+                    <div className="input-field">
                         <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
                         <label htmlFor="email">email</label>
                     </div>
@@ -96,9 +96,9 @@ export default function LoginScreen() {
                         {error && <div style={{ padding: "2rem"}}>{error}</div>}
                         {loading && <div>logging in ...</div>}
                     </div>
-              </div>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
+           </div>
     )
 }

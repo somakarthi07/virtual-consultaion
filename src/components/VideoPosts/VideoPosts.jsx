@@ -15,7 +15,7 @@ export default function Users() {
                         <VideoPost key={video._id} video={video} />
                     ))}
             </div>}
-            {loading && <div style={{height: "80vh", width: "100vw", marginTop: "20vh", marginLeft: "15vw"}}>
+            {loading && <div style={{height: "80vh", marginTop: "20vh", marginLeft: "15vw"}}>
                             <img src={paint} alt="" />
                             <h1 style={{marginLeft: "6vw"}}>Please wait ...</h1>
                         </div>}

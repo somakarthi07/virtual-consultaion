@@ -13,17 +13,17 @@ export default function Post({post}) {
     }, [])
 
     return (
-        <div className="col s12 m12 l12">
-           {post && <div style={{height: "80vh", width: "100vw", marginTop: "5vh", marginLeft: "10vw"}}>
-                        <div class="parallax-container" style={{height: "50vh", width: "50vw"}}>
-                            <div class="parallax"> <img style={{height: "50vh", width: "50vw"}} src={post.image} alt={post.title}/></div>
+        <div className="col s12 m6 l6"  style={{height: "74vh", marginTop: "2vh", marginBottom: "2vh"}}>
+           {post && <div>
+                        <div class="parallax-container" style={{height: "48vh"}}>
+                            <div class="parallax"> <img style={{height: "48vh"}} src={post.image} alt={post.title}/></div>
                         </div>
-                        <div className="card" style={{height: "25vh", width: "50vw"}}>
-                            <div className="card-content">
+                        <div className="card" style={{height: "28vh"}}>
+                            <div className="card-content" >
                                 <span className="card-title">
                                     {post.title}
                                 </span>
-                                <small>Posted by {post.author}</small>
+                                <small >Posted by {post.author}</small>
                             </div>
                             <div className="card-action center">
                                 <button className="btn pink lighten-2 waves-effect waves-light" onClick={(e) => setReadMore(!readMore)}>Read More ...</button>
